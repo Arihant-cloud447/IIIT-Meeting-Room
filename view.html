@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>IIIT Dharwad - View Bookings</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>IIIT Dharwad</h1>
+  <p>Meeting Room Booking System</p>
+</header>
+
+<div class="container">
+
+  <h2>All Bookings</h2>
+
+  <table id="bookingTable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Room</th>
+        <th>Date</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+
+</div>
+
+<script>
+
+fetch("https://script.google.com/macros/s/AKfycbydLitcIawctgs37zQ5Bbo1Kc2BiYbU30qD625twf__82uw14CUnQ8tHtQFnVBe2P0W/exec")
+.then(response => response.json())
+.then(data => {
+
+  var tableBody = document.querySelector("#bookingTable tbody");
+
+  // Skip header row from sheet (index 0)
+  for (var i = 1; i < data.length; i++) {
+
+    var row = document.createElement("tr");
+
+    for (var j = 0; j < 4; j++) {
+
+      var cell = document.createElement("td");
+
+      // Format time to AM/PM
+      if (j === 3) {
+        cell.innerText = convertToAMPM(data[i][j]);
+      } else {
+        cell.innerText = data[i][j];
+      }
+
+      row.appendChild(cell);
+    }
+
+    tableBody.appendChild(row);
+  }
+
+})
+.catch(error => {
+  alert("Error loading bookings");
+  console.log(error);
+});
+
+// Convert 24hr time to AM/PM
+function convertToAMPM(time) {
+
+  var parts = time.split(":");
+  var hour = parseInt(parts[0]);
+  var minute = parts[1];
+
+  var ampm = hour >= 12 ? "PM" : "AM";
+  hour = hour % 12;
+  hour = hour ? hour : 12;
+
+  return hour + ":" + minute + " " + ampm;
+}
+
+</script>
+
+</body>
+</html>

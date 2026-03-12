@@ -1,0 +1,65 @@
+body{
+margin:0;
+font-family:Arial;
+background:#f5f6fa;
+}
+
+.sidebar{
+width:220px;
+height:100vh;
+background:#002147;
+color:white;
+position:fixed;
+padding:20px;
+}
+
+.sidebar h2{
+margin-bottom:40px;
+}
+
+.sidebar a{
+display:block;
+color:white;
+text-decoration:none;
+margin:15px 0;
+}
+
+.sidebar a:hover{
+color:#00bfff;
+}
+
+.content{
+margin-left:240px;
+padding:40px;
+}
+
+.form-card{
+background:white;
+padding:30px;
+width:400px;
+border-radius:10px;
+box-shadow:0 5px 20px rgba(0,0,0,0.2);
+}
+
+input,select{
+width:100%;
+padding:8px;
+margin-top:5px;
+margin-bottom:15px;
+border-radius:5px;
+border:1px solid #ccc;
+}
+
+button{
+background:#002147;
+color:white;
+border:none;
+padding:10px;
+width:100%;
+border-radius:5px;
+cursor:pointer;
+}
+
+button:hover{
+background:#0044aa;
+}
